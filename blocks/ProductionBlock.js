@@ -8,7 +8,7 @@ const ProductionBlock = () => {
   const modalsFunc = useRecoilValue(modalsFuncAtom)
 
   return (
-    <BlockContainer>
+    <BlockContainer id="program">
       <div className="flex flex-col items-center justify-center">
         <div className="text-xl laptop:text-2xl">
           Сайт находится в разработке, поэтому на нем не так много содержимого,
