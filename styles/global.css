@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+
+  background: #F5F6F8;
+  color: #1C1D1F;
+
+  /* overflow-y: hidden;
+  max-height: 100%; */
+
+  font-family: 'Futura PT', sans-serif;
+}
+
+[contenteditable=true]:empty:before {
+  content: attr(placeholder);
+  /* display: block; */
+  color: #aaa;
+}
+
+.textarea a {
+  text-decoration: underline;
+  color: #7a5151;
+}
+
+.prevent-select-text {
+  -webkit-user-select: none;
+  /* Safari */
+  -ms-user-select: none;
+  /* IE 10 and IE 11 */
+  user-select: none;
+  /* Standard syntax */
+}
+
+.real-screen-height {
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  /* min-height: -webkit-fill-available; */
+}
+
+.fab-top {
+  top: 90vh;
+  top: calc(var(--vh, 1vh) * 100 - 134px);
+}
+
+.my-masonry-grid {
+  display: -webkit-box;
+  /* Not needed if autoprefixing */
+  display: -ms-flexbox;
+  /* Not needed if autoprefixing */
+  display: flex;
+  margin-left: -30px;
+  /* gutter size offset */
+  width: auto;
+}
+
+.my-masonry-grid_column {
+  padding-left: 30px;
+  /* gutter size */
+  background-clip: padding-box;
+}
+
+/* Style your items */
+.my-masonry-grid_column>div {
+  /* change div to reference your elements you put in <Masonry> */
+  background: grey;
+  margin-bottom: 30px;
+}
+
+
+.image-gallery-slides {
+  height: 500px;
+}
+
+.image-gallery-slide, .image-gallery-image {
+  max-height: unset;
+  height: 100%;
+  object-fit: contain;
+}
+
+.image-gallery-content, .image-gallery-slide-wrapper, .image-gallery-swipe, .image-gallery-slides {
+  height: 100%;
+}
+
+.MuiSlider-thumb {
+  color: #7a5151;
+}
+
+.MuiSlider-rail {
+  color: rgba(122, 81, 81, 0.5);
+}
+
+.MuiSlider-track {
+  color: #7a5151;
+}
