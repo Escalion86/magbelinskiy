@@ -25,24 +25,16 @@ export const LoadingSpinner = ({ className, size = 'md', text = null }) => {
         style={{ maxHeight: widthHeight * 1.25, maxWidth: widthHeight * 1.25 }}
         className="absolute top-auto bottom-auto left-auto right-auto h-[95%] border-l-2 rounded-full aspect-1 border-general animate-spin"
       ></div>
-      <motion.div
-        animate={{ scale: [1, 1, 1.15, 1.05, 1.15, 1] }}
-        transition={{
-          duration: 1.3,
-          repeat: Infinity,
-          times: [0, 0.6, 0.7, 0.8, 0.9, 1],
-        }}
-        className="flex items-center justify-center h-[86%]"
-      >
+      <div className="flex items-center justify-center h-[100%]">
         <img
-          className="object-contain max-h-[80%] aspect-1 h-[70%] w-[70%]"
+          className="object-contain max-h-[90%] aspect-1 h-[80%] w-[80%]"
           style={{ maxHeight: widthHeight, maxWidth: widthHeight }}
-          src="/img/logo_heart.png"
+          src="/logo.svg"
           alt="logo"
           // width={widthHeight}
           // height={widthHeight}
         />
-      </motion.div>
+      </div>
       {text && <div className="text-lg font-bold animate-pulse">{text}</div>}
     </div>
   )

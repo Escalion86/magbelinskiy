@@ -26,6 +26,7 @@ import fetchProps from '@server/fetchProps'
 import StateLoader from '@components/StateLoader'
 import getServerSidePropsFunc from '@server/getServerSidePropsFunc'
 import ProductionBlock from '@blocks/ProductionBlock'
+import GalleryBlock from '@blocks/GalleryBlock'
 // import filteredEventsSelector from '@state/selectors/filteredEventsSelector'
 // import { useRecoilValue } from 'recoil'
 // import filteredDirectionsSelector from '@state/selectors/filteredDirectionsSelector'
@@ -81,6 +82,7 @@ export default function Home(props) {
         <Header />
         <TitleBlock />
         <AboutBlock />
+        <GalleryBlock />
         <ProductionBlock />
         {/* <EventsBlock maxEvents={4} hideBlockOnZeroEvents /> */}
         {/* <DirectionsBlock startInverse={directionsBlocksInverse} />

@@ -106,14 +106,14 @@ const AboutBlock = () => (
         </div> */}
         {/* <div className="flex items-center"> */}
       </div>
-      <div className="relative px-6 py-6 bg-white shadow-large tablet:py-10">
+      <div className="relative px-10 py-6 bg-white shadow-large tablet:py-10">
         {/* <div className="absolute bottom-0 left-0 object-contain w-10 h-10 text-general"> */}
         {/* <Image
                 src="/img/other/kavichki.svg"
                 layout="fill"
                 className="fill-general"
               /> */}
-        <SvgKavichki className="absolute w-6 h-6 bottom-4 left-4 tablet:w-8 tablet:h-8 laptop:w-10 laptop:h-10 fill-general" />
+        <SvgKavichki className="absolute w-6 h-6 left-3 bottom-3 laptop:bottom-4 laptop:left-4 tablet:w-8 tablet:h-8 laptop:w-10 laptop:h-10 fill-general" />
         {/* </div> */}
 
         {/* <img
@@ -132,7 +132,7 @@ const AboutBlock = () => (
           /> */}
         {/* <div className="absolute top-0 right-0 object-contain rotate-180"> */}
         {/* <Image src="/img/other/kavichki.svg" width="30" height="24" /> */}
-        <SvgKavichki className="absolute w-6 h-6 rotate-180 top-4 right-4 tablet:w-8 tablet:h-8 laptop:w-10 laptop:h-10 fill-general" />
+        <SvgKavichki className="absolute w-6 h-6 rotate-180 right-3 top-3 laptop:top-4 laptop:right-4 tablet:w-8 tablet:h-8 laptop:w-10 laptop:h-10 fill-general" />
         {/* </div> */}
         {/* </div> */}
         {/* </div> */}
