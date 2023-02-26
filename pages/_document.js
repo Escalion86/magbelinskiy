@@ -25,10 +25,10 @@ class MyDocument extends Document {
           />
           <YandexMetrika
             yid="92601771"
-            clickmap={true / false}
-            trackLinks={true / false}
-            accurateTrackBounce={true / false}
-            webvisor={true / false}
+            clickmap={true}
+            trackLinks={true}
+            accurateTrackBounce={true}
+            webvisor={false}
           />
         </Head>
         <body>
