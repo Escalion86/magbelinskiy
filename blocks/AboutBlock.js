@@ -74,8 +74,13 @@ const AboutBlock = () => (
           <ListItem icon={faGraduationCap}>
             <P>
               <b>Открыл</b> единственную в России <b>школу по фокусам</b> и
-              {'сценическому искусству для детей - '}
-              <a href="http://kidmagic.ru">Академию Юных Волшебников</a>
+              сценическому искусству для детей -
+              <a
+                href="http://kidmagic.ru"
+                className="duration-300 text-general hover:text-success"
+              >
+                Академию Юных Волшебников
+              </a>
             </P>
           </ListItem>
           <ListItem icon={faIdCard}>
