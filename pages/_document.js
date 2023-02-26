@@ -24,7 +24,7 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
           <YandexMetrika
-            yid={YOUR_YM_ID}
+            yid="92601771"
             clickmap={true / false}
             trackLinks={true / false}
             accurateTrackBounce={true / false}
