@@ -123,10 +123,10 @@ const Header = () => {
           <div className="flex flex-row-reverse items-center flex-1 gap-x-4">
             <a
               className="text-xl font-semibold duration-300 hover:text-general hover:scale-110"
-              href="tel:79138370020"
+              href="tel:+79138370020"
               target="_blank"
             >
-              8-913-837-00-20
+              +7-913-837-00-20
             </a>
             <div className="flex items-center justify-end gap-x-2">
               <a
