@@ -8,13 +8,12 @@ const ImageGallery = ({ images, noImage, className }) => {
   if (images?.length === 0 && !noImage) return null
 
   return (
-    <div className="flex justify-center w-full border border-gray-400 h-100 laptop:h-120">
+    <div className="flex justify-center w-full border border-gray-400">
       {images?.length > 0 ? (
         <ReactImageGallery
           items={images.map((image) => ({
             original: image,
-            originalClass:
-              'object-contain h-100 laptop:h-120 max-h-100 laptop:max-h-120 w-full',
+            originalClass: 'object-contain max-h-100 laptop:max-h-120 w-full',
             // sizes: '(max-width: 60px) 30px, (min-width: 60px) 60px',
           }))}
           renderItem={(e) => (

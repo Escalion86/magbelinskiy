@@ -222,16 +222,16 @@ const modalsFuncGenerator = (setModals, itemsFunc, router, loggedUser) => {
     //     }
     //   },
     // },
-    payment: {
-      add: (paymentId) => addModal(paymentFunc(paymentId, true)),
-      edit: (paymentId) => addModal(paymentFunc(paymentId)),
-      delete: (paymentId) =>
-        addModal({
-          title: 'Удаление транзакции',
-          text: 'Вы уверены, что хотите удалить транзакцию?',
-          onConfirm: async () => itemsFunc.payment.delete(paymentId),
-        }),
-    },
+    // payment: {
+    //   add: (paymentId) => addModal(paymentFunc(paymentId, true)),
+    //   edit: (paymentId) => addModal(paymentFunc(paymentId)),
+    //   delete: (paymentId) =>
+    //     addModal({
+    //       title: 'Удаление транзакции',
+    //       text: 'Вы уверены, что хотите удалить транзакцию?',
+    //       onConfirm: async () => itemsFunc.payment.delete(paymentId),
+    //     }),
+    // },
     // user: {
     //   add: (userId) => addModal(userFunc(userId, true)),
     //   edit: (userId) => addModal(userFunc(userId)),
@@ -264,9 +264,9 @@ const modalsFuncGenerator = (setModals, itemsFunc, router, loggedUser) => {
     //         itemsFunc.additionalBlock.delete(additionalBlockId),
     //     }),
     // },
-    notifications: {
-      telegram: () => addModal(notificationsTelegramFunc()),
-    },
+    // notifications: {
+    //   telegram: () => addModal(notificationsTelegramFunc()),
+    // },
   }
 }
 

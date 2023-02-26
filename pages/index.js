@@ -13,7 +13,7 @@
 //   fetchingUsers,
 // } from '@helpers/fetchers'
 import Header from '@layouts/Header'
-import { getSession } from 'next-auth/react'
+// import { getSession } from 'next-auth/react'
 import Head from 'next/head'
 import DirectionsBlock from '@blocks/DirectionsBlock'
 import ContactsBlock from '@blocks/ContactsBlock'
@@ -22,11 +22,12 @@ import AdditionalBlocks from '@blocks/AdditionalBlocks'
 import EventsBlock from '@blocks/EventsBlock'
 import AboutBlock from '@blocks/AboutBlock'
 import TitleBlock from '@blocks/TitleBlock'
-import fetchProps from '@server/fetchProps'
+// import fetchProps from '@server/fetchProps'
 import StateLoader from '@components/StateLoader'
-import getServerSidePropsFunc from '@server/getServerSidePropsFunc'
+// import getServerSidePropsFunc from '@server/getServerSidePropsFunc'
 import ProductionBlock from '@blocks/ProductionBlock'
 import GalleryBlock from '@blocks/GalleryBlock'
+// import ModalsPortal from '@layouts/modals/ModalsPortal'
 // import Script from 'next/script'
 // import filteredEventsSelector from '@state/selectors/filteredEventsSelector'
 // import { useRecoilValue } from 'recoil'
@@ -103,7 +104,8 @@ export default function Home(props) {
           </div>
         </noscript> */}
       </Head>
-      <StateLoader className="max-h-screen" {...props}>
+      {/* <StateLoader className="max-h-screen" {...props}> */}
+      <StateLoader noLoader className="max-h-screen" {...props}>
         <Header />
         <TitleBlock />
         <AboutBlock />
@@ -122,9 +124,10 @@ export default function Home(props) {
           </div> */}
         {/* <ZakazModal /> */}
       </StateLoader>
+      {/* </StateLoader> */}
     </>
   )
 }
 
-export const getServerSideProps = async (context) =>
-  await getServerSidePropsFunc(context, getSession, fetchProps)
+// export const getServerSideProps = async (context) =>
+//   await getServerSidePropsFunc(context, getSession, fetchProps)

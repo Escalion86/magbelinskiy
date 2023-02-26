@@ -161,13 +161,13 @@ const StateLoader = (props) => {
 
   return (
     <div className={cn('relative', props.className)}>
-      {isSiteLoading ? (
+      {!props.noLoader && isSiteLoading ? (
         <div className="w-full h-screen">
           <LoadingSpinner size="lg" />
         </div>
       ) : (
         <div className="relative w-full bg-white">
-          <DeviceCheck right />
+          {/* <DeviceCheck right /> */}
           {props.children}
         </div>
       )}
