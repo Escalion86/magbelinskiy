@@ -27,7 +27,7 @@ import StateLoader from '@components/StateLoader'
 import getServerSidePropsFunc from '@server/getServerSidePropsFunc'
 import ProductionBlock from '@blocks/ProductionBlock'
 import GalleryBlock from '@blocks/GalleryBlock'
-import Script from 'next/script'
+// import Script from 'next/script'
 // import filteredEventsSelector from '@state/selectors/filteredEventsSelector'
 // import { useRecoilValue } from 'recoil'
 // import filteredDirectionsSelector from '@state/selectors/filteredDirectionsSelector'
@@ -78,7 +78,7 @@ export default function Home(props) {
     <>
       <Head>
         <title>{`Центр осознанных знакомств - "Половинка успеха"`}</title>
-        <Script
+        {/* <Script
           dangerouslySetInnerHTML={{
             __html: `(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
                 m[i].l=1*new Date();
@@ -101,7 +101,7 @@ export default function Home(props) {
               alt=""
             />
           </div>
-        </noscript>
+        </noscript> */}
       </Head>
       <StateLoader className="max-h-screen" {...props}>
         <Header />
