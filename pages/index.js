@@ -12,6 +12,8 @@
 //   fetchingSiteSettings,
 //   fetchingUsers,
 // } from '@helpers/fetchers'
+import YandexMetrika from 'next-yandex-metrika'
+
 import Header from '@layouts/Header'
 import { getSession } from 'next-auth/react'
 import Head from 'next/head'
@@ -77,6 +79,13 @@ export default function Home(props) {
     <>
       <Head>
         <title>{`Центр осознанных знакомств - "Половинка успеха"`}</title>
+        <YandexMetrika
+          yid="92601771"
+          clickmap={true}
+          trackLinks={true}
+          accurateTrackBounce={true}
+          webvisor={false}
+        />
       </Head>
       <StateLoader className="max-h-screen" {...props}>
         <Header />

@@ -1,4 +1,3 @@
-import YandexMetrika from 'next-yandex-metrika'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
 class MyDocument extends Document {
@@ -22,13 +21,6 @@ class MyDocument extends Document {
           <link
             href="https://cdn.jsdelivr.net/npm/@tailwindcss/custom-forms@0.2.1/dist/custom-forms.css"
             rel="stylesheet"
-          />
-          <YandexMetrika
-            yid="92601771"
-            clickmap={true}
-            trackLinks={true}
-            accurateTrackBounce={true}
-            webvisor={false}
           />
         </Head>
         <body>
