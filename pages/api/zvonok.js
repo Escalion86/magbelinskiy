@@ -31,10 +31,10 @@ export default async function handler(req, res) {
 
   if (method === 'POST') {
     try {
-      const { ct_phone } = typeof body === 'string' ? JSON.parse(body) : body
-      if (ct_phone) {
+      const { ct_phone9 } = typeof body === 'string' ? JSON.parse(body) : body
+      if (ct_phone9) {
         const data = await sendTelegramMassage(
-          `Заявка по звонку с номера +${ct_phone}`
+          `Заявка по звонку с номера +7${ct_phone9}`
         )
 
         return res?.status(201).json({ success: true, data })
@@ -48,10 +48,10 @@ export default async function handler(req, res) {
   }
   if (method === 'GET') {
     try {
-      const { ct_phone } = query
-      if (ct_phone) {
+      const { ct_phone9 } = query
+      if (ct_phone9) {
         const data = await sendTelegramMassage(
-          `Заявка по звонку с номера +${ct_phone}`
+          `Заявка по звонку с номера +7${ct_phone9}`
         )
 
         return res?.status(201).json({ success: true, data })
