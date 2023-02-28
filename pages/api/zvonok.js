@@ -34,9 +34,7 @@ export default async function handler(req, res) {
       const { ct_phone } = typeof body === 'string' ? JSON.parse(body) : body
       if (ct_phone) {
         const data = await sendTelegramMassage(
-          `Заявка по звонку с номера ${
-            String(ct_phone)[0] !== '+' ? '+' : ''
-          }${ct_phone}`
+          `Заявка по звонку с номера +${ct_phone}`
         )
 
         return res?.status(201).json({ success: true, data })
@@ -53,9 +51,7 @@ export default async function handler(req, res) {
       const { ct_phone } = query
       if (ct_phone) {
         const data = await sendTelegramMassage(
-          `Заявка по звонку с номера ${
-            String(ct_phone)[0] !== '+' ? '+' : ''
-          }${ct_phone}`
+          `Заявка по звонку с номера +${ct_phone}`
         )
 
         return res?.status(201).json({ success: true, data })
