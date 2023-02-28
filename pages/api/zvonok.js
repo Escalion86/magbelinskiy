@@ -31,26 +31,11 @@ export default async function handler(req, res) {
 
   if (method === 'POST') {
     try {
-      const { ct_phone } = JSON.parse(body)
+      const { ct_phone } = typeof body === 'string' ? JSON.parse(body) : body
       if (ct_phone) {
         const data = await sendTelegramMassage(
           `Заявка по звонку с номера ${ct_phone}`
         )
-
-        // fetch(
-        //   `https://api.telegram.org/bot${telegramToken}/sendMessage?chat_id=261102161&text=Заявка%20по%20звонку%20с%20${ct_phone}`,
-        //   { method: 'GET' }
-        // ).then((response) => response.json())
-        // const data = await SiteSettings.findOneAndUpdate({}, body, {
-        //   new: true,
-        //   upsert: true, // Make this update into an upsert
-        // })
-        // if (!data) {
-        //   return res?.status(400).json({
-        //     success: false,
-        //     data: { error: `Can't update settings` },
-        //   })
-        // }
 
         return res?.status(201).json({ success: true, data })
       } else {
@@ -63,13 +48,16 @@ export default async function handler(req, res) {
   }
   if (method === 'GET') {
     try {
-      // const data = await SiteSettings.find()
-      // if (!data) {
-      //   return res?.status(400).json({ success: false })
-      // }
-      return res
-        ?.status(200)
-        .json({ success: true, data: data.length > 0 ? data[0] : {} })
+      const { ct_phone } = query
+      if (ct_phone) {
+        const data = await sendTelegramMassage(
+          `Заявка по звонку с номера ${ct_phone}`
+        )
+
+        return res?.status(201).json({ success: true, data })
+      } else {
+        return res?.status(400).json({ success: false })
+      }
     } catch (error) {
       console.log(error)
       return res?.status(400).json({ success: false, error })
