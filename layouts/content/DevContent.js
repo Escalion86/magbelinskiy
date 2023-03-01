@@ -9,10 +9,6 @@ import reviewsAtom from '@state/atoms/reviewsAtom'
 import additionalBlocksAtom from '@state/atoms/additionalBlocksAtom'
 import paymentsAtom from '@state/atoms/paymentsAtom'
 import CardListWrapper from '@layouts/wrappers/CardListWrapper'
-import { Button, Modal } from 'react-daisyui'
-import { useState } from 'react'
-import ModalMUI from '@layouts/modals/ModalMUI'
-import ModalDUI from '@layouts/modals/ModalDUI'
 
 // const DevCard = ({ title, data }) => {
 //   const modalsFunc = useRecoilValue(modalsFuncAtom)
@@ -33,37 +29,27 @@ import ModalDUI from '@layouts/modals/ModalDUI'
 // }
 
 const DevContent = () => {
-  return (
-    <div className="font-sans">
-      <ModalDUI>
-        <Button>Open ModalDUI</Button>
-      </ModalDUI>
-      <ModalMUI>
-        <Button>Open ModalMUI</Button>
-      </ModalMUI>
-    </div>
-  )
   // const modalsFunc = useRecoilValue(modalsFuncAtom)
-  // const events = useRecoilValue(eventsAtom)
-  // const users = useRecoilValue(usersAtom)
-  // const eventsUsers = useRecoilValue(eventsUsersAtom)
-  // const directions = useRecoilValue(directionsAtom)
-  // const reviews = useRecoilValue(reviewsAtom)
-  // const additionalBlocks = useRecoilValue(additionalBlocksAtom)
-  // const payments = useRecoilValue(paymentsAtom)
+  const events = useRecoilValue(eventsAtom)
+  const users = useRecoilValue(usersAtom)
+  const eventsUsers = useRecoilValue(eventsUsersAtom)
+  const directions = useRecoilValue(directionsAtom)
+  const reviews = useRecoilValue(reviewsAtom)
+  const additionalBlocks = useRecoilValue(additionalBlocksAtom)
+  const payments = useRecoilValue(paymentsAtom)
 
-  // return (
-  //   <CardListWrapper>
-  //     <DevCard title="users" data={users} />
-  //     <DevCard title="events" data={events} />
-  //     <DevCard title="eventsUsers" data={eventsUsers} />
-  //     <DevCard title="directions" data={directions} />
-  //     <DevCard title="reviews" data={reviews} />
-  //     <DevCard title="additionalBlocks" data={additionalBlocks} />
-  //     <DevCard title="payments" data={payments} />
-  //     {/* <div onClick={() => modalsFunc.test()}>ТЕСТ</div> */}
-  //   </CardListWrapper>
-  // )
+  return (
+    <CardListWrapper>
+      <DevCard title="users" data={users} />
+      <DevCard title="events" data={events} />
+      <DevCard title="eventsUsers" data={eventsUsers} />
+      <DevCard title="directions" data={directions} />
+      <DevCard title="reviews" data={reviews} />
+      <DevCard title="additionalBlocks" data={additionalBlocks} />
+      <DevCard title="payments" data={payments} />
+      {/* <div onClick={() => modalsFunc.test()}>ТЕСТ</div> */}
+    </CardListWrapper>
+  )
 }
 
 export default DevContent
