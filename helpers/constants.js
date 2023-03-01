@@ -2,6 +2,7 @@ import {
   faBan,
   faBirthdayCake,
   faCalendarDay,
+  faCalendarPlus,
   faCheck,
   faCheckCircle,
   faCircle,
@@ -512,11 +513,11 @@ export const CONTENTS = {
   // },
   events: { Component: EventsContent, name: 'Мероприятия' },
   requests: { Component: RequestsContent, name: 'Заявки' },
-  // questionnaire: { Component: QuestionnaireContent, name: 'Моя анкета' },
-  // users: { Component: UsersContent, name: 'Пользователи' },
-  // payments: { Component: PaymentsContent, name: 'Транзакции' },
+  questionnaire: { Component: QuestionnaireContent, name: 'Моя анкета' },
+  users: { Component: UsersContent, name: 'Пользователи' },
+  payments: { Component: PaymentsContent, name: 'Транзакции' },
   // contacts: { Component: ContactsContent, name: 'Контакты на сайте' },
-  // dev: { Component: DevContent, name: 'Разработчик' },
+  dev: { Component: DevContent, name: 'Разработчик' },
   // histories: {
   //   Component: HistoriesContent,
   //   name: 'События / Участники мероприятий',
@@ -614,13 +615,13 @@ export const pages = [
 
 export const pagesGroups = [
   { id: 0, name: 'Мероприятия', icon: faCalendarAlt },
-  { id: 1, name: 'Заявки', icon: faCalendarAlt },
+  { id: 1, name: 'Заявки', icon: faCalendarPlus },
   // { id: 1, name: 'Сайт', icon: faHome },
   { id: 2, name: 'Клиенты', icon: faUser },
   { id: 3, name: 'Транзакции', icon: faMoneyBill },
   // { id: 4, name: 'События', icon: faHistory },
   // { id: 5, name: 'Статистика', icon: faPieChart },
-  // { id: 99, name: 'Разработчик', icon: faBug },
+  { id: 99, name: 'Разработчик', icon: faBug },
 ]
 
 export const PAY_TYPES = [

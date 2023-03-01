@@ -12,6 +12,7 @@ import { SessionProvider } from 'next-auth/react'
 // import Script from 'next/script'
 import {
   RecoilRoot,
+  RecoilEnv,
   // atom,
   // selector,
   // useRecoilState,
@@ -80,6 +81,8 @@ const theme = createTheme({
 // const store = createStore(allReducers, enhancer)
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
+  RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false
+
   useEffect(() => {
     let vh = window.innerHeight * 0.01
     document.documentElement.style.setProperty('--vh', `${vh}px`)

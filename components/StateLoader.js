@@ -35,7 +35,7 @@ import setLoadingSelector from '@state/selectors/setLoadingSelector'
 import setNotLoadingSelector from '@state/selectors/setNotLoadingSelector'
 import setErrorSelector from '@state/selectors/setErrorSelector'
 import setNotErrorSelector from '@state/selectors/setNotErrorSelector'
-import { modalsFuncAtom } from '@state/atoms'
+import { modalsAtom, modalsFuncAtom } from '@state/atoms'
 import loggedUserActiveRoleAtom from '@state/atoms/loggedUserActiveRoleAtom'
 import loggedUserActiveStatusAtom from '@state/atoms/loggedUserActiveStatusAtom'
 import siteSettingsAtom from '@state/atoms/siteSettingsAtom'
@@ -51,6 +51,11 @@ import questionnaireEditSelector from '@state/selectors/questionnaireEditSelecto
 import questionnaireDeleteSelector from '@state/selectors/questionnaireDeleteSelector'
 import questionnaireUsersEditSelector from '@state/selectors/questionnaireUsersEditSelector'
 import questionnaireUsersDeleteSelector from '@state/selectors/questionnaireUsersDeleteSelector'
+import { useRouter } from 'next/router'
+import modalsFuncGenerator from '@layouts/modals/modalsFuncGenerator'
+import { useMemo } from 'react'
+import addModalSelector from '@state/selectors/addModalSelector'
+import addErrorModalSelector from '@state/selectors/addErrorModalSelector'
 
 const StateLoader = (props) => {
   if (props.error && Object.keys(props.error).length > 0)
@@ -58,17 +63,19 @@ const StateLoader = (props) => {
 
   const snackbar = useSnackbar()
 
+  const router = useRouter()
+
   const [isSiteLoading, setIsSiteLoading] = useRecoilState(isSiteLoadingAtom)
 
-  const modalsFunc = useRecoilValue(modalsFuncAtom)
+  const setModalsFunc = useSetRecoilState(modalsFuncAtom)
 
   const [loggedUser, setLoggedUser] = useRecoilState(loggedUserAtom)
-  // const [loggedUserActiveRole, setLoggedUserActiveRole] = useRecoilState(
-  //   loggedUserActiveRoleAtom
-  // )
-  // const [loggedUserActiveStatus, setLoggedUserActiveStatus] = useRecoilState(
-  //   loggedUserActiveStatusAtom
-  // )
+  const [loggedUserActiveRole, setLoggedUserActiveRole] = useRecoilState(
+    loggedUserActiveRoleAtom
+  )
+  const [loggedUserActiveStatus, setLoggedUserActiveStatus] = useRecoilState(
+    loggedUserActiveStatusAtom
+  )
 
   // const setEventsState = useSetRecoilState(eventsAtom)
   // const setDirectionsState = useSetRecoilState(directionsAtom)
@@ -82,8 +89,8 @@ const StateLoader = (props) => {
   // const setQuestionnairesState = useSetRecoilState(questionnairesAtom)
   // const setQuestionnairesUsersState = useSetRecoilState(questionnairesUsersAtom)
 
-  // const setEvent = useSetRecoilState(eventEditSelector)
-  // const deleteEvent = useSetRecoilState(eventDeleteSelector)
+  const setEvent = useSetRecoilState(eventEditSelector)
+  const deleteEvent = useSetRecoilState(eventDeleteSelector)
   // const setDirection = useSetRecoilState(directionEditSelector)
   // const deleteDirection = useSetRecoilState(directionDeleteSelector)
   // const setAdditionalBlock = useSetRecoilState(additionalBlockEditSelector)
@@ -108,56 +115,98 @@ const StateLoader = (props) => {
   //   questionnaireUsersDeleteSelector
   // )
 
-  const [itemsFunc, setItemsFunc] = useRecoilState(itemsFuncAtom)
+  const setItemsFunc = useSetRecoilState(itemsFuncAtom)
   const setLoadingCard = useSetRecoilState(setLoadingSelector)
   const setNotLoadingCard = useSetRecoilState(setNotLoadingSelector)
   const setErrorCard = useSetRecoilState(setErrorSelector)
   const setNotErrorCard = useSetRecoilState(setNotErrorSelector)
+  const addModal = useSetRecoilState(addModalSelector)
+  const addErrorModal = useSetRecoilState(addErrorModalSelector)
+
+  const itemsFunc = useMemo(
+    () =>
+      itemsFuncGenerator({
+        setLoading: setIsSiteLoading,
+        addErrorModal,
+        setLoadingCard,
+        setNotLoadingCard,
+        setErrorCard,
+        setNotErrorCard,
+        setEvent,
+        deleteEvent,
+        // setDirection,
+        // deleteDirection,
+        // setAdditionalBlock,
+        // deleteAdditionalBlock,
+        // setUser,
+        // deleteUser,
+        // setReview,
+        // deleteReview,
+        // setPayment,
+        // deletePayment,
+        // setEventsUsers,
+        // deleteEventsUsers,
+        // deleteEventsUsersByEventId,
+        setSiteSettings: setSiteSettingsState,
+        // setQuestionnaire,
+        // deleteQuestionnaire,
+        // setQuestionnaireUsers,
+        // deleteQuestionnaireUsers,
+        snackbar,
+      }),
+    []
+  )
 
   useEffect(() => {
-    // if (!loggedUserActiveRole || props.loggedUser?.role !== loggedUser?.role)
-    //   setLoggedUserActiveRole(props.loggedUser?.role ?? 'client')
-    // if (!loggedUserActiveStatus || props.loggedUser?.role !== 'dev')
-    //   setLoggedUserActiveStatus(props.loggedUser?.status ?? 'novice')
+    setModalsFunc(modalsFuncGenerator(addModal, itemsFunc, router, loggedUser))
+  }, [loggedUser])
+
+  useEffect(() => {
+    setItemsFunc(itemsFunc)
+
+    if (!loggedUserActiveRole || props.loggedUser?.role !== loggedUser?.role)
+      setLoggedUserActiveRole(props.loggedUser?.role ?? 'client')
+    if (!loggedUserActiveStatus || props.loggedUser?.role !== 'dev')
+      setLoggedUserActiveStatus(props.loggedUser?.status ?? 'novice')
     setLoggedUser(props.loggedUser)
 
     setIsSiteLoading(false)
   }, [])
 
-  useEffect(() => {
-    if (Object.keys(modalsFunc).length > 0 && !itemsFunc)
-      setItemsFunc(
-        itemsFuncGenerator({
-          setLoading: setIsSiteLoading,
-          modalsFunc,
-          setLoadingCard,
-          setNotLoadingCard,
-          setErrorCard,
-          setNotErrorCard,
-          // setEvent,
-          // deleteEvent,
-          // setDirection,
-          // deleteDirection,
-          // setAdditionalBlock,
-          // deleteAdditionalBlock,
-          // setUser,
-          // deleteUser,
-          // setReview,
-          // deleteReview,
-          // setPayment,
-          // deletePayment,
-          // setEventsUsers,
-          // deleteEventsUsers,
-          // deleteEventsUsersByEventId,
-          setSiteSettings: setSiteSettingsState,
-          // setQuestionnaire,
-          // deleteQuestionnaire,
-          // setQuestionnaireUsers,
-          // deleteQuestionnaireUsers,
-          snackbar,
-        })
-      )
-  }, [modalsFunc])
+  // useEffect(() => {
+  //   if (Object.keys(modalsFunc).length > 0 && !itemsFunc)
+  //     setItemsFunc(
+  //       itemsFuncGenerator({
+  //         setLoading: setIsSiteLoading,
+  //         addModal,
+  //         setLoadingCard,
+  //         setNotLoadingCard,
+  //         setErrorCard,
+  //         setNotErrorCard,
+  //         // setEvent,
+  //         // deleteEvent,
+  //         // setDirection,
+  //         // deleteDirection,
+  //         // setAdditionalBlock,
+  //         // deleteAdditionalBlock,
+  //         // setUser,
+  //         // deleteUser,
+  //         // setReview,
+  //         // deleteReview,
+  //         // setPayment,
+  //         // deletePayment,
+  //         // setEventsUsers,
+  //         // deleteEventsUsers,
+  //         // deleteEventsUsersByEventId,
+  //         setSiteSettings: setSiteSettingsState,
+  //         // setQuestionnaire,
+  //         // deleteQuestionnaire,
+  //         // setQuestionnaireUsers,
+  //         // deleteQuestionnaireUsers,
+  //         snackbar,
+  //       })
+  //     )
+  // }, [modalsFunc])
 
   return (
     <div className={cn('relative', props.className)}>
@@ -166,12 +215,14 @@ const StateLoader = (props) => {
           <LoadingSpinner size="lg" />
         </div>
       ) : (
-        <div className="relative w-full bg-white">
-          {/* <DeviceCheck right /> */}
-          {props.children}
-        </div>
+        <>
+          <div className="relative w-full bg-white">
+            {/* <DeviceCheck right /> */}
+            {props.children}
+          </div>
+          <ModalsPortal />
+        </>
       )}
-      <ModalsPortal />
     </div>
   )
 }

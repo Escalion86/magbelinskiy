@@ -147,7 +147,7 @@ const itemsFuncGenerator = (
   props,
   array = [
     'request',
-    // 'event',
+    'event',
     // 'direction',
     // 'additionalBlock',
     // 'user',
@@ -162,7 +162,7 @@ const itemsFuncGenerator = (
     setNotLoadingCard,
     setErrorCard,
     setNotErrorCard,
-    modalsFunc,
+    addErrorModal,
     snackbar = {},
   } = props
   const obj = {}
@@ -191,7 +191,7 @@ const itemsFuncGenerator = (
                   item,
                   error,
                 }
-                modalsFunc.error(data)
+                addErrorModal(data)
               }
             )
           } else {
@@ -215,7 +215,7 @@ const itemsFuncGenerator = (
                   item,
                   error,
                 }
-                modalsFunc.error(data)
+                addErrorModal(data)
                 console.log(data)
               }
             )
@@ -234,7 +234,7 @@ const itemsFuncGenerator = (
               snackbar.error(messages[itemName]?.delete?.error)
               setErrorCard(itemName + item._id)
               const data = { errorPlace: 'DELETE ERROR', itemName, item, error }
-              modalsFunc.error(data)
+              addErrorModal(data)
               console.log(data)
             }
             //  deleteEvent(itemId)

@@ -19,6 +19,7 @@ import { useRecoilValue } from 'recoil'
 // import { useState } from 'react'
 // import { useRecoilState, useSetRecoilState } from 'recoil'
 import UserMenu from './UserMenu'
+import Image from 'next/image'
 
 const CabinetHeader = ({ title = '', titleLink, icon }) => {
   // const setMenuOpen = useSetRecoilState(menuOpenAtom)
@@ -69,12 +70,24 @@ const CabinetHeader = ({ title = '', titleLink, icon }) => {
         <div className="flex items-center flex-1">
           <Link href="/" shallow>
             <a className="hidden tablet:block">
-              <img
+              {/* <img
                 className="rounded-full h-14"
-                src={icon || '/img/logo_heart.png'}
+                src={icon || '/logo.svg'}
                 alt="logo"
                 // width={48}
                 // height={48}
+              /> */}
+              <Image
+                className="z-10 py-1"
+                src="/logo.svg"
+                // layout="fill"
+                width="80"
+                height="50"
+                style={{
+                  // fillOpacity: 0,
+                  filter: 'drop-shadow( 2px 2px 2px rgba(255, 255, 255, 1))',
+                }}
+                // className="fill-general"
               />
             </a>
           </Link>
