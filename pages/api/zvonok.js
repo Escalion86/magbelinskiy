@@ -31,14 +31,24 @@ export default async function handler(req, res) {
 
   if (method === 'POST') {
     try {
-      const { ct_phone9 } = typeof body === 'string' ? JSON.parse(body) : body
+      const { ct_phone, ct_phone9 } =
+        typeof body === 'string' ? JSON.parse(body) : body
       if (ct_phone9) {
         const data = await sendTelegramMassage(
           `Заявка по звонку с номера +7${ct_phone9}`
         )
 
         return res?.status(201).json({ success: true, data })
+      } else if (ct_phone) {
+        const data = await sendTelegramMassage(
+          `Заявка по звонку с номера +${String(Number(ct_phone))}`
+        )
+
+        return res?.status(201).json({ success: true, data })
       } else {
+        const data = await sendTelegramMassage(
+          `Заявка body: ${JSON.stringify(body)}`
+        )
         return res?.status(400).json({ success: false })
       }
     } catch (error) {
@@ -48,14 +58,23 @@ export default async function handler(req, res) {
   }
   if (method === 'GET') {
     try {
-      const { ct_phone9 } = query
+      const { ct_phone9, ct_phone } = query
       if (ct_phone9) {
         const data = await sendTelegramMassage(
           `Заявка по звонку с номера +7${ct_phone9}`
         )
 
         return res?.status(201).json({ success: true, data })
+      } else if (ct_phone) {
+        const data = await sendTelegramMassage(
+          `Заявка по звонку с номера +${String(Number(ct_phone))}`
+        )
+
+        return res?.status(201).json({ success: true, data })
       } else {
+        const data = await sendTelegramMassage(
+          `Заявка query: ${JSON.stringify(query)}`
+        )
         return res?.status(400).json({ success: false })
       }
     } catch (error) {
