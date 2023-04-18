@@ -27,6 +27,7 @@ import StateLoader from '@components/StateLoader'
 // import getServerSidePropsFunc from '@server/getServerSidePropsFunc'
 import ProductionBlock from '@blocks/ProductionBlock'
 import GalleryBlock from '@blocks/GalleryBlock'
+import TextAreaBlock from '@blocks/TextAreaBlock'
 // import ModalsPortal from '@layouts/modals/ModalsPortal'
 // import Script from 'next/script'
 // import filteredEventsSelector from '@state/selectors/filteredEventsSelector'
@@ -119,6 +120,7 @@ export default function Home(props) {
         {/* <DirectionsBlock startInverse={directionsBlocksInverse} />
         <AdditionalBlocks startInverse={additionalBlocksInverse} />
         <ReviewsBlock /> */}
+        <TextAreaBlock />
         <ContactsBlock />
         {/* <div className="flex flex-col items-start px-10 py-5 text-sm font-thin text-white bg-black min-h-80 tablet:px-20">
             <div>

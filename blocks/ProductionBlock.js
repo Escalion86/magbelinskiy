@@ -8,15 +8,15 @@ const ProductionBlock = () => {
   const modalsFunc = useRecoilValue(modalsFuncAtom)
 
   return (
-    <BlockContainer id="program">
+    <BlockContainer id="program" small>
       <div className="flex flex-col items-center justify-center">
-        <div className="text-xl laptop:text-2xl">
+        {/* <div className="text-xl laptop:text-2xl">
           Сайт находится в разработке, поэтому на нем не так много содержимого,
           однако вы легко можете оставить заявку, и Алексей свяжется с Вами в
           ближайшее время
-        </div>
+        </div> */}
         <PulseButton
-          className="mt-4"
+          // className="mt-4"
           title="Оставить заявку"
           onClick={() => modalsFunc.request.add()}
         />

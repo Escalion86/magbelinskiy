@@ -33,6 +33,12 @@ module.exports = {
       }),
       textShadow: {
         // '2xl': '1px 1px 5px rgb(33 34 43 / 20%)',
+        '2xl': '5px 5px 4px rgb(0 0 0 / 50%)',
+        general: '1px 1px 3px rgba(107, 95, 207, .9)',
+      },
+      dropShadow: {
+        // '2xl': '1px 1px 5px rgb(33 34 43 / 20%)',
+        '2xl': '5px 5px 4px rgb(0 0 0 / 50%)',
         general: '1px 1px 3px rgba(107, 95, 207, .9)',
       },
       colors: {

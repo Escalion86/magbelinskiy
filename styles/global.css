@@ -22,6 +22,10 @@ body {
   color: #aaa;
 }
 
+a {
+  text-decoration: none;
+}
+
 .textarea a {
   text-decoration: underline;
   color: #7a5151;

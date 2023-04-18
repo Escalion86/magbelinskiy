@@ -91,7 +91,7 @@ const Header = () => {
         className="z-10 w-full"
         style={{
           backgroundImage: `url("/texture_smallest.jpg")`,
-          // backgroundRepeat: 'repeat',
+          backgroundRepeat: 'repeat',
           // backgroundPosition: 'top 48px right',
           // backgroundSize: '',
         }}
