@@ -15,6 +15,7 @@ import {
 import SvgKavichki from 'svg/SvgKavichki'
 import Image from 'next/image'
 import birthDateToAge from '@helpers/birthDateToAge'
+import { motion } from 'framer-motion'
 
 const AboutBlock = () => (
   <BlockContainer
@@ -30,7 +31,7 @@ const AboutBlock = () => (
     <div className="flex flex-col">
       {/* <Image src="/foto1.png" layout="responsive" /> */}
       <div className="relative flex gap-3 tablet:gap-4">
-        <div className="relative flex flex-col items-stretch flex-1 gap-3 pb-4 tablet:gap-4">
+        <div className="relative flex flex-col items-stretch flex-1 gap-3 pb-4 overflow-x-hidden tablet:gap-4">
           {/* <H2 className="sticky top-[6.5rem]">Наши цели</H2> */}
           <ListItem icon={faStar}>
             <P>
@@ -126,10 +127,19 @@ const AboutBlock = () => (
             src={'/img/other/kavichki.png'}
             alt="kavichki"
           /> */}
-        <div className="italic text-center taxt-lg tablet:text-2xl">
-          Меня завораживают удивленные лица зрителей.
-          <br />В этот момент их эмоции самые настоящие.
-        </div>
+        <motion.div
+          className="italic text-center taxt-lg tablet:text-2xl"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{
+            margin: '0px 0px -100px 0px',
+            // once: true
+          }}
+        >
+          Искреннее удивление и неповторимые эмоции зрителей создают настоящую
+          магию в зале и на сцене
+        </motion.div>
         {/* <img
             className="absolute bottom-0 right-0 object-contain rotate-180"
             src={'/img/other/kavichki.png'}
