@@ -23,7 +23,12 @@ import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
-import { TextareaAutosize, TextField } from '@mui/material'
+import {
+  FormControlLabel,
+  Switch,
+  TextareaAutosize,
+  TextField,
+} from '@mui/material'
 // import DatePicker from '@components/DatePicker'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
@@ -151,6 +156,7 @@ const requestFunc = (requestId, clone = false) => {
     const [town, setTown] = useState('Красноярск')
     const [address, setAddress] = useState('')
     const [phone, setPhone] = useState(0)
+    const [official, setOfficial] = useState(false)
     const [comment, setComment] = useState('')
 
     // const [description, setDescription] = useState(
@@ -185,6 +191,7 @@ const requestFunc = (requestId, clone = false) => {
             town,
             address,
             phone,
+            official,
             comment,
           },
           clone
@@ -203,8 +210,6 @@ const requestFunc = (requestId, clone = false) => {
       // setOnShowOnCloseConfirmDialog(isFormChanged)
       // setDisableConfirm(!isFormChanged)
     }, [phone])
-
-    console.log('date', date)
 
     return (
       <div className="flex flex-col items-center">
@@ -393,7 +398,9 @@ const requestFunc = (requestId, clone = false) => {
                 : phone.toString()
               : 0
           }
+          required
         />
+
         <TextField
           sx={{ m: 1 }}
           label="Комментарий (по желанию)"
@@ -407,6 +414,18 @@ const requestFunc = (requestId, clone = false) => {
           fullWidth
           value={comment}
         />
+        <div className="w-full px-2">
+          <FormControlLabel
+            control={
+              <Switch
+                checked={official}
+                onChange={(e) => setOfficial(e.target.checked)}
+                fullWidth
+              />
+            }
+            label="Юридическое лицо"
+          />
+        </div>
         {/* <FormControl sx={{ m: 1 }} fullWidth size="small" margin="none"> */}
         {/* <InputLabel>{'Комментарий (по желанию)'}</InputLabel> */}
         {/* <TextareaAutosize

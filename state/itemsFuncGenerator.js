@@ -147,7 +147,7 @@ const itemsFuncGenerator = (
   props,
   array = [
     'request',
-    'event',
+    // 'event',
     // 'direction',
     // 'additionalBlock',
     // 'user',

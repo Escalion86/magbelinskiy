@@ -142,70 +142,70 @@ const modalsFuncGenerator = (addModal, itemsFunc, router, loggedUser) => {
     //       onConfirm: async () => itemsFunc.direction.delete(directionId),
     //     }),
     // },
-    event: {
-      add: (eventId) => addModal(eventFunc(eventId, true)),
-      edit: (eventId) => addModal(eventFunc(eventId)),
-      users: (eventId) => addModal(eventUsersFunc(eventId)),
-      cancel: (eventId) =>
-        addModal({
-          title: 'Отмена события',
-          text: 'Вы уверены, что хотите отменить событие (это не удалит событие, а лишь изменит его статус на отмененное)?',
-          onConfirm: async () => itemsFunc.event.cancel(eventId),
-        }),
-      uncancel: (eventId) =>
-        addModal({
-          title: 'Возобновление события',
-          text: 'Вы уверены, что хотите возобновить событие?',
-          onConfirm: async () => itemsFunc.event.uncancel(eventId),
-        }),
-      delete: (eventId) =>
-        addModal({
-          title: 'Удаление события',
-          text: 'Вы уверены, что хотите удалить событие?',
-          onConfirm: async () => itemsFunc.event.delete(eventId),
-        }),
-      view: (eventId) => addModal(eventViewFunc(eventId)),
-      signUp: (eventId, status) => {
-        if (!loggedUser?._id)
-          addModal({
-            title: 'Необходимо зарегистрироваться и авторизироваться',
-            text: 'Для записи на мероприятие, необходимо сначала зарегистрироваться, а затем авторизироваться на сайте',
-            confirmButtonName: 'Зарегистрироваться / Авторизироваться',
-            onConfirm: () => router.push('/login', '', { shallow: true }),
-          })
-        else {
-          const postfixStatus = status === 'reserve' ? ' в резерв' : ''
-          addModal({
-            title: `Запись${postfixStatus} на мероприятие`,
-            text: `Вы уверены что хотите записаться${postfixStatus} на мероприятие?`,
-            confirmButtonName: `Записаться${postfixStatus}`,
-            onConfirm: () => {
-              itemsFunc.event.signUp(eventId, loggedUser?._id, status)
-            },
-          })
-        }
-      },
-      signOut: (eventId, activeStatus) => {
-        if (!loggedUser?._id)
-          addModal({
-            title: 'Необходимо зарегистрироваться',
-            text: 'Для записи на мероприятие, необходимо сначала авторизироваться на сайте',
-            confirmButtonName: 'Авторизироваться',
-            onConfirm: () => router.push('/login', '', { shallow: true }),
-          })
-        else {
-          const postfixStatus = activeStatus === 'reserve' ? ' в резерв' : ''
-          addModal({
-            title: `Отмена записи${postfixStatus} на мероприятие`,
-            text: `Вы уверены что хотите отменить запись${postfixStatus} на мероприятие?`,
-            confirmButtonName: `Отменить запись${postfixStatus}`,
-            onConfirm: () => {
-              itemsFunc.event.signOut(eventId, loggedUser?._id, activeStatus)
-            },
-          })
-        }
-      },
-    },
+    // event: {
+    //   add: (eventId) => addModal(eventFunc(eventId, true)),
+    //   edit: (eventId) => addModal(eventFunc(eventId)),
+    //   users: (eventId) => addModal(eventUsersFunc(eventId)),
+    //   cancel: (eventId) =>
+    //     addModal({
+    //       title: 'Отмена события',
+    //       text: 'Вы уверены, что хотите отменить событие (это не удалит событие, а лишь изменит его статус на отмененное)?',
+    //       onConfirm: async () => itemsFunc.event.cancel(eventId),
+    //     }),
+    //   uncancel: (eventId) =>
+    //     addModal({
+    //       title: 'Возобновление события',
+    //       text: 'Вы уверены, что хотите возобновить событие?',
+    //       onConfirm: async () => itemsFunc.event.uncancel(eventId),
+    //     }),
+    //   delete: (eventId) =>
+    //     addModal({
+    //       title: 'Удаление события',
+    //       text: 'Вы уверены, что хотите удалить событие?',
+    //       onConfirm: async () => itemsFunc.event.delete(eventId),
+    //     }),
+    //   view: (eventId) => addModal(eventViewFunc(eventId)),
+    //   signUp: (eventId, status) => {
+    //     if (!loggedUser?._id)
+    //       addModal({
+    //         title: 'Необходимо зарегистрироваться и авторизироваться',
+    //         text: 'Для записи на мероприятие, необходимо сначала зарегистрироваться, а затем авторизироваться на сайте',
+    //         confirmButtonName: 'Зарегистрироваться / Авторизироваться',
+    //         onConfirm: () => router.push('/login', '', { shallow: true }),
+    //       })
+    //     else {
+    //       const postfixStatus = status === 'reserve' ? ' в резерв' : ''
+    //       addModal({
+    //         title: `Запись${postfixStatus} на мероприятие`,
+    //         text: `Вы уверены что хотите записаться${postfixStatus} на мероприятие?`,
+    //         confirmButtonName: `Записаться${postfixStatus}`,
+    //         onConfirm: () => {
+    //           itemsFunc.event.signUp(eventId, loggedUser?._id, status)
+    //         },
+    //       })
+    //     }
+    //   },
+    //   signOut: (eventId, activeStatus) => {
+    //     if (!loggedUser?._id)
+    //       addModal({
+    //         title: 'Необходимо зарегистрироваться',
+    //         text: 'Для записи на мероприятие, необходимо сначала авторизироваться на сайте',
+    //         confirmButtonName: 'Авторизироваться',
+    //         onConfirm: () => router.push('/login', '', { shallow: true }),
+    //       })
+    //     else {
+    //       const postfixStatus = activeStatus === 'reserve' ? ' в резерв' : ''
+    //       addModal({
+    //         title: `Отмена записи${postfixStatus} на мероприятие`,
+    //         text: `Вы уверены что хотите отменить запись${postfixStatus} на мероприятие?`,
+    //         confirmButtonName: `Отменить запись${postfixStatus}`,
+    //         onConfirm: () => {
+    //           itemsFunc.event.signOut(eventId, loggedUser?._id, activeStatus)
+    //         },
+    //       })
+    //     }
+    //   },
+    // },
     // payment: {
     //   add: (paymentId) => addModal(paymentFunc(paymentId, true)),
     //   edit: (paymentId) => addModal(paymentFunc(paymentId)),

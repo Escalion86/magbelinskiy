@@ -39,6 +39,10 @@ const requestsSchema = {
     required: [true, 'Введите Телефон'],
     default: null,
   },
+  official: {
+    type: Boolean,
+    default: false,
+  },
   // Комментарий
   comment: {
     type: String,
