@@ -6,10 +6,11 @@ const VideoBlock = () => (
     // id="about"
     // title="Об иллюзионисте Алексее Белинском"
   >
-    <div className="aspect-h-9 aspect-w-16">
+    <div className="flex items-center justify-center">
       <iframe
-        width="560"
-        height="315"
+        className="w-full aspect-[16/9] max-h-[calc(100vh-200px)] max-w-[calc(126vh)]"
+        // width="100%"
+        // height="100%"
         src="https://www.youtube.com/embed/CuoufduSlXQ"
         title="YouTube video player"
         frameborder="0"
