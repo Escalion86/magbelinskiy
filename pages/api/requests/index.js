@@ -46,6 +46,7 @@ export default async function handler(req, res) {
         town,
         address,
         phone,
+        official,
         comment,
       } = body
 
@@ -70,7 +71,7 @@ export default async function handler(req, res) {
           !!address ? address : '-'
         }\n<b>Телефон:</b> +${phone}\n<b>Комментарий:</b> ${
           !!comment ? comment : '-'
-        }`,
+        }\n<b>Юр. лицо:</b> ${official ? 'Нет' : 'Да'}`,
         `tel:+${phone}`,
         req
       )
